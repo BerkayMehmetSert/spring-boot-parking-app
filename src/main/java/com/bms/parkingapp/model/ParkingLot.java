@@ -50,7 +50,7 @@ public class ParkingLot {
     private List<ParkingPrice> parkingPrices;
 
     @OneToMany(mappedBy = "parkingLot")
-    private List<PricingException> pricingExceptions;
+    private List<PricingExceptional> pricingExceptionals;
 
     @OneToMany(mappedBy = "parkingLot")
     private List<ParkingMonthly> parkingMonthlies;

@@ -1,15 +1,15 @@
 package com.bms.parkingapp.dto.converter;
 
-import com.bms.parkingapp.dto.PricingExceptionDto;
-import com.bms.parkingapp.model.PricingException;
+import com.bms.parkingapp.dto.PricingExceptionalDto;
+import com.bms.parkingapp.model.PricingExceptional;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @Component
-public class PricingExceptionDtoConverter {
-    public PricingExceptionDto convert(PricingException from) {
-        return new PricingExceptionDto(
+public class PricingExceptionalDtoConverter {
+    public PricingExceptionalDto convert(PricingExceptional from) {
+        return new PricingExceptionalDto(
                 from.getId(),
                 from.getDate(),
                 from.getMorningHoursCost(),
@@ -20,7 +20,7 @@ public class PricingExceptionDtoConverter {
         );
     }
 
-    public List<PricingExceptionDto> convert(List<PricingException> from) {
+    public List<PricingExceptionalDto> convert(List<PricingExceptional> from) {
         return from.stream().map(this::convert).toList();
     }
 }

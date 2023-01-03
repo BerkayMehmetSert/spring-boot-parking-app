@@ -2,7 +2,7 @@ package com.bms.parkingapp.dto;
 
 import java.time.LocalDate;
 
-public record PricingExceptionDto(
+public record PricingExceptionalDto(
         String id,
         LocalDate date,
         Double morningHoursCost,

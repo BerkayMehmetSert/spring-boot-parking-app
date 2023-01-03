@@ -15,7 +15,7 @@ public class VehicleParkingOneTimeDtoConverter {
                 from.getPayForMinHour(),
                 from.getBookingForHours(),
                 from.getBasicParkingCost(),
-                from.getCouponCode(),
+                from.getOfferCode(),
                 from.getNetCost(),
                 from.getIsPaid(),
                 from.getParkingLot() != null ? from.getParkingLot().getId() : null

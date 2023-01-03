@@ -2,6 +2,7 @@ package com.bms.parkingapp.helper.message;
 
 public class BusinessMessage {
     public static final String ILLEGAL_STATE_EXCEPTION = "Utility class, cannot be instantiated";
+    public static final String PARKING_LOT_DOES_NOT_ALLOW_MONTHLY_PASS = "Parking lot does not allow monthly pass";
 
     private BusinessMessage() {
         throw new IllegalStateException(ILLEGAL_STATE_EXCEPTION);
@@ -53,6 +54,8 @@ public class BusinessMessage {
     }
 
     public static class ParkingMonthly{
+        public static final String PARKING_MONTHLY_PRICE_NOT_FOUND = "Parking monthly price not found. Please contact the administrator";
+
         private ParkingMonthly(){
             throw new IllegalStateException(ILLEGAL_STATE_EXCEPTION);
         }
@@ -95,6 +98,21 @@ public class BusinessMessage {
         public static final String PARKING_PRICE_NOT_FOUND = "Parking price not found";
         public static final String PARKING_PRICE_LIST_EMPTY = "Parking price list is empty";
         public static final String PARKING_PRICE_ALREADY_EXISTS = "Parking price already exists";
+    }
+
+    public static class PaymentMethod{
+        private PaymentMethod(){
+            throw new IllegalStateException(ILLEGAL_STATE_EXCEPTION);
+        }
+
+        public static final String PAYMENT_METHOD_SAVE_SUCCESS = "Payment method saved successfully";
+        public static final String PAYMENT_METHOD_UPDATE_SUCCESS = "Payment method updated successfully";
+        public static final String PAYMENT_METHOD_DELETE_SUCCESS = "Payment method deleted successfully";
+        public static final String PAYMENT_METHOD_LIST_SUCCESS = "Payment method list retrieved successfully";
+        public static final String PAYMENT_METHOD_FOUND_SUCCESS = "Payment method found successfully";
+        public static final String PAYMENT_METHOD_NOT_FOUND = "Payment method not found";
+        public static final String PAYMENT_METHOD_LIST_EMPTY = "Payment method list is empty";
+        public static final String PAYMENT_METHOD_ALREADY_EXISTS = "Payment method already exists";
     }
 
     public static class PricingExceptional{

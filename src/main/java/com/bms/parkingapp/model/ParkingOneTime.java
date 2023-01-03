@@ -25,8 +25,7 @@ public class ParkingOneTime {
     private Double bookingForHours;
 
     private Double basicParkingCost;
-
-    private String  couponCode;
+    private String offerCode;
 
     private Double netCost;
 

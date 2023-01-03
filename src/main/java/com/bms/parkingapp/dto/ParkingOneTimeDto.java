@@ -8,7 +8,7 @@ public record ParkingOneTimeDto(
         Boolean payForMinHours,
         Double bookingForHours,
         Double basicParkingCost,
-        String couponCode,
+        String offerCode,
         Double netCost,
         Boolean isPaid,
         String parkingLotId,

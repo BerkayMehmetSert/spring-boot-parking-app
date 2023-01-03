@@ -2,17 +2,21 @@ package com.bms.parkingapp.helper.message;
 
 public class BusinessLogMessage {
 
+    public static final String PARKING_LOT_DOES_NOT_ALLOW_MONTHLY_PASS = "Parking lot does not allow monthly pass";
+
     private BusinessLogMessage() {
         throw new IllegalStateException(BusinessMessage.ILLEGAL_STATE_EXCEPTION);
     }
 
-    public static class Customer{
-        private Customer(){
+    public static class Customer {
+
+        private Customer() {
             throw new IllegalStateException(BusinessMessage.ILLEGAL_STATE_EXCEPTION);
         }
 
         public static final String CUSTOMER_SAVE_SUCCESS = "Customer saved successfully";
         public static final String CUSTOMER_UPDATE_SUCCESS = "Customer updated successfully : {}";
+        public static final String CUSTOMER_UPDATE_REGULAR_STATUS_SUCCESS = "Customer regular status updated successfully : {}";
         public static final String CUSTOMER_DELETE_SUCCESS = "Customer deleted successfully : {}";
         public static final String CUSTOMER_LIST_SUCCESS = "Customer list retrieved successfully";
         public static final String CUSTOMER_FOUND_SUCCESS = "Customer found successfully : {}";
@@ -21,8 +25,8 @@ public class BusinessLogMessage {
         public static final String CUSTOMER_ALREADY_EXISTS = "Customer already exists : {}";
     }
 
-    public static class Offer{
-        private Offer(){
+    public static class Offer {
+        private Offer() {
             throw new IllegalStateException(BusinessMessage.ILLEGAL_STATE_EXCEPTION);
         }
 
@@ -36,8 +40,9 @@ public class BusinessLogMessage {
         public static final String OFFER_ALREADY_EXISTS = "Offer already exists : {}";
     }
 
-    public static class ParkingLot{
-        private ParkingLot(){
+    public static class ParkingLot {
+
+        private ParkingLot() {
             throw new IllegalStateException(BusinessMessage.ILLEGAL_STATE_EXCEPTION);
         }
 
@@ -49,10 +54,13 @@ public class BusinessLogMessage {
         public static final String PARKING_LOT_NOT_FOUND = "Parking lot not found : {}";
         public static final String PARKING_LOT_LIST_EMPTY = "Parking lot list is empty";
         public static final String PARKING_LOT_ALREADY_EXISTS = "Parking lot already exists : {}";
+        public static final String PARKING_LOT_NUMBER_ALREADY_EXISTS = "Parking lot number already exists : {}";
     }
 
-    public static class ParkingMonthly{
-        private ParkingMonthly(){
+    public static class ParkingMonthly {
+        public static final String PARKING_MONTHLY_PRICE_NOT_FOUND = "Parking monthly price not found. Please contact the administrator";
+
+        private ParkingMonthly() {
             throw new IllegalStateException(BusinessMessage.ILLEGAL_STATE_EXCEPTION);
         }
 
@@ -66,8 +74,11 @@ public class BusinessLogMessage {
         public static final String PARKING_MONTHLY_ALREADY_EXISTS = "Parking monthly already exists : {}";
     }
 
-    public static class ParkingOneTime{
-        private ParkingOneTime(){
+    public static class ParkingOneTime {
+        public static final String PARKING_ONE_TIME_ASSIGN_VEHICLE_SUCCESS = "Parking one time vehicle assigned successfully : {}";
+        public static final String PARKING_ONE_TIME_REMOVE_VEHICLE_SUCCESS = "Parking one time vehicle removed successfully : {}";
+
+        private ParkingOneTime() {
             throw new IllegalStateException(BusinessMessage.ILLEGAL_STATE_EXCEPTION);
         }
 
@@ -81,8 +92,8 @@ public class BusinessLogMessage {
         public static final String PARKING_ONE_TIME_ALREADY_EXISTS = "Parking one time already exists : {}";
     }
 
-    public static class ParkingPrice{
-        private ParkingPrice(){
+    public static class ParkingPrice {
+        private ParkingPrice() {
             throw new IllegalStateException(BusinessMessage.ILLEGAL_STATE_EXCEPTION);
         }
 
@@ -96,8 +107,8 @@ public class BusinessLogMessage {
         public static final String PARKING_PRICE_ALREADY_EXISTS = "Parking price already exists : {}";
     }
 
-    public static class PaymentMethod{
-        private PaymentMethod(){
+    public static class PaymentMethod {
+        private PaymentMethod() {
             throw new IllegalStateException(BusinessMessage.ILLEGAL_STATE_EXCEPTION);
         }
 
@@ -111,8 +122,8 @@ public class BusinessLogMessage {
         public static final String PAYMENT_METHOD_ALREADY_EXISTS = "Payment method already exists : {}";
     }
 
-    public static class PricingExceptional{
-        private PricingExceptional(){
+    public static class PricingExceptional {
+        private PricingExceptional() {
             throw new IllegalStateException(BusinessMessage.ILLEGAL_STATE_EXCEPTION);
         }
 
@@ -126,8 +137,8 @@ public class BusinessLogMessage {
         public static final String PRICING_EXCEPTION_ALREADY_EXISTS = "Pricing exception already exists : {}";
     }
 
-    public static class Vehicle{
-        private Vehicle(){
+    public static class Vehicle {
+        private Vehicle() {
             throw new IllegalStateException(BusinessMessage.ILLEGAL_STATE_EXCEPTION);
         }
 

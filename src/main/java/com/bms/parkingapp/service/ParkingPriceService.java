@@ -34,13 +34,8 @@ public class ParkingPriceService {
 
     public void createParkingPrice(CreateParkingPriceRequest request) {
         ParkingPrice parkingPrice = new ParkingPrice();
-        ParkingLot parkingLot = parkingLotService.findParkingLotByParkingLotId(request.getParkingLotId());
 
-        if (Boolean.FALSE.equals(parkingLot.getIsMonthlyPassAllowed())) {
-            log.error(BusinessLogMessage.PARKING_LOT_DOES_NOT_ALLOW_MONTHLY_PASS);
-            throw new ParkingLotDoesNotAllowMonthlyPassException(BusinessMessage
-                    .PARKING_LOT_DOES_NOT_ALLOW_MONTHLY_PASS);
-        }
+        checkIfParkingLotAllowsMonthlyPass(request.getParkingLotId());
 
         parkingPrice.setDayOfWeek(request.getDayOfWeek());
         parkingPrice.setMorningHoursCost(request.getMidDayHoursCost());
@@ -49,7 +44,7 @@ public class ParkingPriceService {
         parkingPrice.setAllDayCost(Generator.calculateAllDayCost(request.getMorningHoursCost(),
                 request.getMidDayHoursCost(),
                 request.getEveningHoursCost()));
-        parkingPrice.setParkingLot(parkingLot);
+        parkingPrice.setParkingLot(parkingLotService.findParkingLotByParkingLotId(request.getParkingLotId()));
 
         parkingPriceRepository.save(parkingPrice);
         log.info(BusinessLogMessage.ParkingPrice.PARKING_PRICE_SAVE_SUCCESS);
@@ -57,13 +52,8 @@ public class ParkingPriceService {
 
     public void updateParkingPrice(final String id, UpdateParkingPriceRequest request) {
         ParkingPrice parkingPrice = findParkingPriceByParkingPriceId(id);
-        ParkingLot parkingLot = parkingLotService.findParkingLotByParkingLotId(request.getParkingLotId());
 
-        if (Boolean.FALSE.equals(parkingLot.getIsMonthlyPassAllowed())) {
-            log.error(BusinessLogMessage.PARKING_LOT_DOES_NOT_ALLOW_MONTHLY_PASS);
-            throw new ParkingLotDoesNotAllowMonthlyPassException(BusinessMessage
-                    .PARKING_LOT_DOES_NOT_ALLOW_MONTHLY_PASS);
-        }
+        checkIfParkingLotAllowsMonthlyPass(request.getParkingLotId());
 
         parkingPrice.setDayOfWeek(request.getDayOfWeek());
         parkingPrice.setMorningHoursCost(request.getMidDayHoursCost());
@@ -72,7 +62,7 @@ public class ParkingPriceService {
         parkingPrice.setAllDayCost(Generator.calculateAllDayCost(request.getMorningHoursCost(),
                 request.getMidDayHoursCost(),
                 request.getEveningHoursCost()));
-        parkingPrice.setParkingLot(parkingLot);
+        parkingPrice.setParkingLot(parkingLotService.findParkingLotByParkingLotId(request.getParkingLotId()));
 
         parkingPriceRepository.save(parkingPrice);
         log.info(BusinessLogMessage.ParkingPrice.PARKING_PRICE_UPDATE_SUCCESS + id);
@@ -110,5 +100,15 @@ public class ParkingPriceService {
                     log.error(BusinessLogMessage.ParkingPrice.PARKING_PRICE_NOT_FOUND + id);
                     throw new ParkingPriceNotFoundException(BusinessMessage.ParkingPrice.PARKING_PRICE_NOT_FOUND);
                 });
+    }
+
+    private void checkIfParkingLotAllowsMonthlyPass(final String parkingLotId) {
+        ParkingLot parkingLot = parkingLotService.findParkingLotByParkingLotId(parkingLotId);
+
+        if (Boolean.FALSE.equals(parkingLot.getIsMonthlyPassAllowed())) {
+            log.error(BusinessLogMessage.PARKING_LOT_DOES_NOT_ALLOW_MONTHLY_PASS);
+            throw new ParkingLotDoesNotAllowMonthlyPassException(BusinessMessage
+                    .PARKING_LOT_DOES_NOT_ALLOW_MONTHLY_PASS);
+        }
     }
 }

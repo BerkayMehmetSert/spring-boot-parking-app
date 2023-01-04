@@ -11,12 +11,8 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class BasePricingExceptionalRequest {
     private LocalDate date;
-
     private Double morningHoursCost;
-
     private Double midDayHoursCost;
-
     private Double eveningHoursCost;
-
     private String parkingLotId;
 }

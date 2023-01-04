@@ -3,6 +3,7 @@ package com.bms.parkingapp.service;
 import com.bms.parkingapp.dto.ParkingMonthlyDto;
 import com.bms.parkingapp.dto.converter.ParkingMonthlyDtoConverter;
 import com.bms.parkingapp.dto.request.CreateParkingMonthlyRequest;
+import com.bms.parkingapp.dto.request.UpdateParkingMonthlyRequest;
 import com.bms.parkingapp.exception.ParkingMonthlyNotFoundException;
 import com.bms.parkingapp.helper.DateHelper;
 import com.bms.parkingapp.helper.Generator;
@@ -49,6 +50,19 @@ public class ParkingMonthlyService {
 
         parkingMonthlyRepository.save(parkingMonthly);
         log.info(BusinessLogMessage.ParkingMonthly.PARKING_MONTHLY_SAVE_SUCCESS);
+    }
+
+    public void updateParkingMonthly(final String id, UpdateParkingMonthlyRequest request) {
+        ParkingMonthly parkingMonthly = findParkingMonthlyByParkingMonthlyId(id);
+
+        parkingMonthly.setPurchaseDate(DateHelper.getLocalDate());
+        parkingMonthly.setStartDate(request.getStartDate());
+        parkingMonthly.setDurationInDays(request.getDurationInDays());
+        parkingMonthly.setParkingLot(parkingLotService.findParkingLotByParkingLotId(request.getParkingLotId()));
+        parkingMonthly.setCustomer(customerService.findCustomerByCustomerId(request.getCustomerId()));
+
+        parkingMonthlyRepository.save(parkingMonthly);
+        log.info(BusinessLogMessage.ParkingMonthly.PARKING_MONTHLY_UPDATE_SUCCESS + id);
     }
 
     public void updateParkingMonthlyParkingLot(final String id, final String parkingLotId) {

@@ -69,6 +69,12 @@ public class GeneralExceptionHandler extends ResponseEntityExceptionHandler {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
     }
 
+    @ExceptionHandler(ParkingLotDoesNotAllowMonthlyPassException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ResponseEntity<Object> handleParkingLotDoesNotAllowMonthlyPassException(ParkingLotDoesNotAllowMonthlyPassException ex) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+    }
+
     @ExceptionHandler(ParkingMonthlyAlreadyExistException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ResponseEntity<Object> handleParkingMonthlyAlreadyExistException(ParkingMonthlyAlreadyExistException ex) {

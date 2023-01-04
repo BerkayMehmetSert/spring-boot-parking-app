@@ -31,7 +31,8 @@ public class ParkingOneTimeController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Void> updateParkingOneTime(@PathVariable String id, @RequestBody UpdateParkingOneTimeRequest request) {
+    public ResponseEntity<Void> updateParkingOneTime(@PathVariable String id,
+                                                     @RequestBody UpdateParkingOneTimeRequest request) {
         parkingOneTimeService.updateParkingOneTime(id, request);
 
         log.info(ControllerLogMessage.ParkingOneTime.PARKING_ONE_TIME_UPDATE_SUCCESS + id);

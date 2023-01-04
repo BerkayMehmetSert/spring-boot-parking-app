@@ -11,12 +11,8 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class BaseCustomerRequest {
     private String firstName;
-
     private String lastName;
-
     private String billingAddress;
-
     private String contactNumber;
-
     private LocalDate registrationDate;
 }
